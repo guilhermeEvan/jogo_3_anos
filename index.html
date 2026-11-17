@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f6f1e7">
+    <title>Ellen &amp; Guilherme — Uma aventura a dois</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&family=Press+Start+2P&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="page-shell">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="Início">
+          <span class="brand-mark" aria-hidden="true">e<span>♥</span>g</span>
+          <span>nossa aventura</span>
+        </a>
+        <span class="top-note"><span class="sparkle" aria-hidden="true">✦</span> feito com carinho</span>
+      </header>
+
+      <section class="intro" aria-labelledby="page-title">
+        <div class="intro-copy">
+          <p class="eyebrow"><span aria-hidden="true">✿</span> um joguinho para dois</p>
+          <h1 id="page-title">Uma aventura<br>bem <span>nossa.</span></h1>
+          <p class="intro-text">Prepare o coração e os pulinhos: tem gatinho fofo, disco voador e um mundo inteiro pra explorar.</p>
+          <a class="jump-link" href="#jogo">Bora jogar <span aria-hidden="true">↓</span></a>
+        </div>
+        <div class="intro-doodle" aria-hidden="true">
+          <span class="doodle-sun"></span>
+          <span class="doodle-heart">♥</span>
+          <span class="doodle-star star-one">✳</span>
+          <span class="doodle-star star-two">✦</span>
+          <div class="doodle-cat"><span></span><i></i><b></b></div>
+          <span class="doodle-caption">Ellen + Guilherme</span>
+        </div>
+      </section>
+
+      <section class="game-section" id="jogo" aria-labelledby="game-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow" id="phase-label">fase 01 · o jardim encantado</p>
+            <h2 id="game-title">A missão dos gatinhos</h2>
+          </div>
+          <p class="section-aside">Escolha quem vai nessa aventura <span aria-hidden="true">♡</span></p>
+        </div>
+
+        <div class="game-card">
+          <div class="game-topline">
+            <div class="level-name"><span class="level-dot"></span><span id="level-name">JARDIM ENCANTADO</span></div>
+            <div class="hud" aria-live="polite">
+              <span class="collectible-counters" id="collectible-counters">
+                <span class="hud-item"><span class="hud-cat-icon" aria-hidden="true"></span><strong id="cat-count">0</strong><span class="hud-total">/ 5</span></span>
+                <span class="hud-item record"><span class="vinyl-icon" aria-hidden="true"></span><strong id="disc-count">0</strong><span class="hud-total">/ 8</span></span>
+              </span>
+              <span class="hud-item rose-counter" id="phase-counter" hidden>
+                <span class="rose-hud-icon" id="phase-item-icon" aria-hidden="true"></span><strong id="phase-item-count">0</strong><span class="hud-total" id="phase-item-total">/ 5</span>
+              </span>
+              <span class="hud-item life-item"><span class="hp-icon">HP</span><strong id="life-count">3</strong></span>
+            </div>
+          </div>
+          <div class="game-stage">
+            <canvas id="game-canvas" width="960" height="540" tabindex="0" aria-label="Jogo de plataforma no Jardim Encantado"></canvas>
+            <div class="screen screen-select" id="select-screen">
+              <div class="selection-panel">
+                <span class="panel-kicker">PRIMEIRO, UMA ESCOLHA</span>
+                <h3>Quem vai se aventurar?</h3>
+                <p>Escolha seu personagem para começar a jornada.</p>
+                <div class="character-options" role="group" aria-label="Escolha de personagem">
+                  <button class="character-card" type="button" data-character="ellen" aria-pressed="false">
+                    <span class="character-art ellen-art" aria-hidden="true">
+                      <span class="art-hair"></span><span class="art-face"></span><span class="art-shirt"></span>
+                      <span class="art-overalls"></span><span class="art-legs"></span>
+                    </span>
+                    <span class="character-name">Ellen</span>
+                    <span class="character-description">Jardineira jeans &amp; coração aventureiro e muito linda!</span>
+                  </button>
+                  <button class="character-card" type="button" data-character="guilherme" aria-pressed="false">
+                    <span class="character-art guilherme-art" aria-hidden="true">
+                      <span class="art-hair"></span><span class="art-face"></span><span class="art-shirt"></span><span class="art-cap"></span>
+                      <span class="art-overalls"></span><span class="art-legs"></span>
+                    </span>
+                    <span class="character-name">Guilherme</span>
+                    <span class="character-description">Gosta muito de discos e possui tendências autistas  </span>
+                  </button>
+                </div>
+                <button class="start-button" id="start-button" type="button" disabled>Escolha um personagem <span aria-hidden="true">→</span></button>
+              </div>
+            </div>
+            <div class="screen npc-dialogue is-hidden" id="npc-dialogue-screen" aria-hidden="true" inert>
+              <div class="npc-dialogue-panel" role="dialog" aria-modal="true" aria-labelledby="npc-dialogue-title">
+                <span class="panel-kicker" id="npc-dialogue-kicker">UMA NOVA AMIGA</span>
+                <h3 id="npc-dialogue-title">Elisangela</h3>
+                <p id="npc-dialogue-copy">Oi! Estou procurando algumas rosas para fazer um buquê. Você pode me ajudar a encontrá-las?</p>
+                <div class="dialogue-options">
+                  <button class="dialogue-button dialogue-accept" id="accept-quest" type="button">Sim, vou ajudar!</button>
+                  <button class="dialogue-button dialogue-decline" id="decline-quest" type="button">Agora não</button>
+                </div>
+              </div>
+            </div>
+            <div class="screen screen-result is-hidden" id="result-screen">
+              <div class="result-panel">
+                <span class="result-icon" aria-hidden="true">✿</span>
+                <p class="panel-kicker">MISSÃO CUMPRIDA</p>
+                <h3>Que aventura linda!</h3>
+                <p id="result-copy">Você encontrou todos os gatinhos e discos!</p>
+                <button class="start-button" id="play-again-button" type="button">Jogar de novo <span aria-hidden="true">↻</span></button>
+              </div>
+            </div>
+            <div class="game-toast" id="game-toast" role="status" aria-live="polite"></div>
+          </div>
+          <div class="game-footer">
+            <div class="controls-hint">
+              <span class="key-group"><kbd>←</kbd><kbd>→</kbd></span>
+              <span>mover</span>
+              <span class="hint-divider">·</span>
+              <kbd class="space-key">ESPAÇO</kbd>
+              <span>pular</span>
+              <span class="hint-divider">·</span>
+              <kbd>C</kbd>
+              <span>trocar</span>
+            </div>
+            <button class="switch-character-button" id="switch-character-button" type="button" aria-label="Trocar personagem (tecla C)" hidden><span aria-hidden="true">↔</span> TROCAR</button>
+            <span class="footer-note">colecione tudo e encontre a saída <span aria-hidden="true">♡</span></span>
+          </div>
+        </div>
+        <div class="touch-controls" aria-label="Controles do jogo">
+          <button type="button" data-control="left" aria-label="Mover para a esquerda">←</button>
+          <button type="button" data-control="jump" aria-label="Pular">↑</button>
+          <button type="button" data-control="right" aria-label="Mover para a direita">→</button>
+        </div>
+      </section>
+
+      <footer class="page-footer">
+        <span>feito de pixels, pulinhos e muito amor</span>
+        <span aria-hidden="true">✿ &nbsp; ♥ &nbsp; ✿</span>
+      </footer>
+    </main>
+    <script src="game.js"></script>
+  </body>
+</html>
